@@ -1,0 +1,170 @@
+Split Array into Consecutive Subsequences
+Problem Statement:
+
+You are given an integer array nums that is sorted in non-decreasing order.
+
+
+Determine if it is possible to split nums into one or more subsequences such that both of the following conditions are true:
+
+
+
+Each subsequence is a consecutive increasing sequence (i.e. each integer is exactly one more than the previous integer).
+All subsequences have a length of 3 or more.
+
+
+Return true if you can split nums according to the above conditions, or false otherwise.
+
+
+
+A subsequence of an array is a new array that is formed from the original array by deleting some (can be none) of the elements without disturbing the relative positions of the remaining elements. (i.e., [1,3,5] is a subsequence of [1,2,3,4,5] while [1,3,2] is not).
+
+Input Explanation:
+
+An integer n → the size of the array.
+An array nums of length n, which is already sorted in non-decreasing order.
+Output Explanation:
+
+"true" → if the array can be split this way.
+"false" → otherwise.
+Constraints:
+
+1 <= n <= 104
+-1000 <= nums[i] <= 1000
+nums is sorted in non-decreasing order.
+
+
+Time Limit:
+1 sec
+
+Example 1:
+Input
+6
+1 2 3 3 4 5
+
+Output
+true
+
+Example 2:
+Input
+8
+1 2 3 3 4 4 5 5
+
+Output
+true
+
+Example 3:
+Input
+6
+1 2 3 4 4 5
+
+Output
+false
+
+Sample I/O Explanation:
+
+Example 1:
+
+Input: nums = [1,2,3,3,4,5]
+
+Output: true
+
+Explanation: nums can be split into the following subsequences:
+
+[1,2,3,3,4,5] --> 1, 2, 3
+
+[1,2,3,3,4,5] --> 3, 4, 5
+
+
+
+Example 2:
+
+Input: nums = [1,2,3,3,4,4,5,5]
+
+Output: true
+
+Explanation: nums can be split into the following subsequences:
+
+[1,2,3,3,4,4,5,5] --> 1, 2, 3, 4, 5
+
+[1,2,3,3,4,4,5,5] --> 3, 4, 5
+
+
+
+Example 3:
+
+Input: nums = [1,2,3,4,4,5]
+
+Output: false
+
+Explanation: It is impossible to split nums into consecutive increasing subsequences of length 3 or more.
+
+
+
+
+-------------------------------
+Jump Game II
+Problem Statement:
+
+You are given a 0-indexed array of integers nums of length n. You are initially positioned at index 0.
+
+
+
+Each element nums[i] represents the maximum length of a forward jump from index i. In other words, if you are at index i, you can jump to any index (i + j) where:
+
+0 <= j <= nums[i] and
+i + j < n
+
+
+Return the minimum number of jumps to reach index n - 1. The test cases are generated such that you can reach index n - 1.
+
+
+
+Input Explanation:
+
+An integer n → size of the array
+An array nums of length n, where each nums[i] represents the maximum jump length from index i.
+Output Explanation:
+
+Minimum number of jumps to reach the last index
+Constraints:
+
+1 <= n <= 104
+0 <= nums[i] <= 1000
+It's guaranteed that you can reach nums[n - 1].
+Time Limit:
+1 sec
+
+Example 1:
+Input
+5
+2 3 1 1 4
+
+Output
+2
+
+Example 2:
+Input
+5
+2 3 0 1 4
+
+Output
+2
+
+Sample I/O Explanation:
+
+Example 1:
+
+Input: nums = [2,3,1,1,4]
+
+Output: 2
+
+Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+
+
+Example 2:
+
+Input: nums = [2,3,0,1,4]
+
+Output: 2
+
