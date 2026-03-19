@@ -28,3 +28,4 @@ int main(){
     cout<<isValid(str2);
     return 0;
 }
+

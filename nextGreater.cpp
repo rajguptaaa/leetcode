@@ -5,12 +5,11 @@
 using namespace std;
 
 //using Array
-/*
 vector<int> nxtGreater(vector<int>& arr){
     int n = arr.size();
     vector<int> res(n, -1);
     for(int i=0; i<n-1; i++){
-        for(int j=i+1; i<n; i++){
+        for(int j=i+1; j<n; j++){
             if(arr[i] < arr[j]){
                 res[i] = arr[j];
             }
@@ -19,7 +18,7 @@ vector<int> nxtGreater(vector<int>& arr){
     }
     return res;
 }
-*/
+
 
 //using stack
 /*
@@ -69,21 +68,20 @@ vector<int> nxtGreater(vector<int>& arr1, vector<int>& arr2){
 }
 
 int main(){
-    /*
     vector<int> arr = {6,8,0,1,3};
     vector<int> ans = nxtGreater(arr);
     for(int x : ans){
         cout<< x <<" ";
     }
     cout<<endl;
-    */
-    vector<int> arr1 = {4,1,2};
-    vector<int> arr2 = {4,3,1,2,5};
-    vector<int> ans = nxtGreater(arr1, arr2);
-    for(int x : ans){
-        cout<< x <<" ";
-    }
-    cout<<endl;
+    
+    // vector<int> arr1 = {4,1,2};
+    // vector<int> arr2 = {4,3,1,2,5};
+    // vector<int> ans = nxtGreater(arr1, arr2);
+    // for(int x : ans){
+    //     cout<< x <<" ";
+    // }
+    // cout<<endl;
 
     return 0;
 }
