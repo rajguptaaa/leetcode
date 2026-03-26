@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 /**
@@ -59,64 +60,189 @@ public:
 class Solutions
 {
 public:
-    Node *insert(Node *root, int key)
+    // Node *insert(Node *root, int key)
+    // {
+    //     if (!root)
+    //     {
+    //         return new Node(key);
+    //     }
+    //     if (root->val > key)
+    //     {
+    //         root->left = insert(root->left, key);
+    //     }
+    //     else
+    //     {
+    //         root->right = insert(root->right, key);
+    //     }
+    //     return root;
+    // }
+    Node *insertIteration(Node *root, int key)
     {
         if (!root)
-        {
             return new Node(key);
-        }
-        if (root->val > key)
+
+        Node *curr = root;
+        while (true)
         {
-            root->left = insert(root->left, key);
+            if (key < curr->val)
+            {
+                if (!curr->left)
+                {
+                    curr->left = new Node(key);
+                    break;
+                }
+                curr = curr->left;
+            }
+            else // key > curr->val
+            {
+                if (!curr->right)
+                {
+                    curr->right = new Node(key);
+                    break;
+                }
+                curr = curr->right;
+            }
         }
-        else
-        {
-            root->right = insert(root->right, key);
-        }
+
         return root;
     }
 
-    void inorder(Node* root)
+    void inorder(Node *root)
     {
-        if (!root)return;
+        if (!root)
+            return;
         inorder(root->left);
         cout << root->val << " ";
         inorder(root->right);
     }
-    
-    void preorder(Node* root)
+
+    void preorder(Node *root)
     {
-        if (!root) return;
+        if (!root)
+            return;
         cout << root->val << " ";
         preorder(root->left);
         preorder(root->right);
     }
 
-    void postorder(Node* root){
-        if(!root) return;
+    void postorder(Node *root)
+    {
+        if (!root)
+            return;
         postorder(root->left);
         postorder(root->right);
-        cout<<root->val<<" ";
+        cout << root->val << " ";
+    }
+
+    int ceilVal(Node *root, int key)
+    {
+        int ceil = -1;
+        while (root)
+        {
+            if (root->val == key)
+            {
+                ceil = root->val;
+                return ceil;
+            }
+            else if (key > root->val)
+            {
+                root = root->right;
+            }
+            else
+            {
+                ceil = root->val;
+                root = root->left;
+            }
+        }
+        return ceil;
+    }
+
+    int floorVal(Node *root, int key)
+    {
+        int floor = -1;
+        while (root)
+        {
+            if (root->val == key)
+            {
+                floor = root->val;
+                return floor;
+            }
+            else if (key < root->val)
+            {
+                root = root->left;
+            }
+            else
+            {
+                floor = root->val;
+                root = root->right;
+            }
+        }
+        return floor;
+    }
+
+    int searchInBSTIterative(Node *root, int key)
+    {
+        Node *curr = root;
+
+        while (curr != nullptr)
+        {
+            if (curr->val == key)
+                return curr->val;
+            else if (key < curr->val)
+                curr = curr->left;
+            else
+                curr = curr->right;
+        }
+
+        return -1;
+    }
+
+    int searchInBSTRecursive(Node *root, int key)
+    {
+        if(!root) return -1;
+        Node *curr = root;
+        while (curr != nullptr)
+        {
+            if (curr->val == key)
+                return curr->val;
+            else if (curr->val > key)
+            {
+                return searchInBSTRecursive(curr->left, key);
+            }
+            else
+            {
+                return searchInBSTRecursive(curr->right, key);
+            }
+        }
+        return -1;
     }
 };
 
 int main()
 {
-    Solutions* obj = new Solutions();
-    vector<int> arr = {3,15,4,6,7,8};
+    Solutions *obj = new Solutions();
+    vector<int> arr = {3, 15, 4, 6, 7, 8};
 
-    Node* root = nullptr;
+    Node *root = nullptr;
+
+    // for (int x : arr){
+    //     root = obj->insert(root, x);
+    // }
 
     for (int x : arr)
     {
-        root = obj->insert(root, x);
+        root = obj->insertIteration(root, x);
     }
 
-    obj->inorder(root);
-    cout<<endl;
-    obj->preorder(root);
-    cout<<endl;
-    obj->postorder(root);
+    // obj->inorder(root);
+    // cout << endl;
+    // obj->preorder(root);
+    // cout << endl;
+    // obj->postorder(root);
+    // cout << endl;
+    // cout << obj->ceilVal(root, 5) << endl;
+    // cout << obj->floorVal(root, 9) << endl;
+    cout << obj->searchInBSTRecursive(root, 15);
 
     return 0;
 }
